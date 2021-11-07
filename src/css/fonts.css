@@ -19,3 +19,13 @@
     font-family: "Cascadia Code PL";
     src: url("../fonts/CascadiaCodePL-Regular.woff2") format("woff2");
 }
+
+@font-face {
+    font-family: "Source Han Sans SC HW";
+    src: url("../fonts/SourceHanSansCN-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Noto Sans SC";
+    src: url("../fonts/NotoSansSC-Regular.woff2") format("woff2");
+}
