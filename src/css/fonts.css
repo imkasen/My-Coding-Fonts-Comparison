@@ -11,6 +11,11 @@
 }
 
 @font-face {
+    font-family: "Iosevka SS09 Extended";
+    src: url("../fonts/iosevka-ss09-extended.woff2") format("woff2");
+}
+
+@font-face {
     font-family: "JetBrains Mono";
     src: url("../fonts/JetBrainsMono-Regular.woff2") format("woff2");
 }
