@@ -16,6 +16,11 @@
 }
 
 @font-face {
+    font-family: "Iosevka custom";
+    src: url("../fonts/iosevka-custom-regular.woff2") format("woff2");
+}
+
+@font-face {
     font-family: "JetBrains Mono";
     src: url("../fonts/JetBrainsMono-Regular.woff2") format("woff2");
 }
