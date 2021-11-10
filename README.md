@@ -6,4 +6,4 @@ I've been using **Source Code Pro** as the coding font for the past few years, b
 
 ## Fira Code Stylistic Sets
 
-VS Code: `"editor.fontLigatures": "'ss01', 'ss03', 'ss05'"`
+VS Code: `"editor.fontLigatures": "'ss01', 'ss03', 'ss05', 'ss06', 'zero'"`
