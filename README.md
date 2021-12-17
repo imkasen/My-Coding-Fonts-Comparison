@@ -19,10 +19,16 @@ Current font configuration:
 
 ### Baking 
 
+#### Manually
+
 1. Create a python virtual environment
 2. Install [OpenType Feature Freezer](https://github.com/twardoch/fonttools-opentype-feature-freezer) : `pip install --upgrade opentype-feature-freezer`
 3. Execute `pyftfeatfreeze -n -v -f 'ss01,ss03,ss05,ss06,zero,cv15' -S -U Custom FiraCode-xxx.ttf FiraCode-xxx-Custom.ttf`
    * *ss06(`\\`) seems not working after testing, and maybe this [issue](https://github.com/twardoch/fonttools-opentype-feature-freezer/issues/20) can explain the problem.*
+
+#### Script
+
+1. run `custom.sh` in Linux terminal.
 
 ## Old Description
 
