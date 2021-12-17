@@ -41,6 +41,7 @@ if [ ! -d "${TMP_DIR}" ]; then
   # Create a python virtual environment
   echo "Create a python virtual environment..."
   python3 -m venv venv
+  echo "Activate the virtual environment..."
   # shellcheck source=/dev/null
   source ./venv/bin/activate
   # Install OpenType Feature Freezer
@@ -51,22 +52,18 @@ if [ ! -d "${TMP_DIR}" ]; then
   # Customize fonts
   mkdir -p "${OPUT_DIR}/ttf"
   echo "Customize fonts..."
-  # ttf fonts
-  for file in ttf/*.ttf; do
+  # ttf fonts, variable fonts
+  for file in ttf/*.ttf variable_ttf/*.ttf; do
     echo "Process ${file}..."
     pyftfeatfreeze -f "${SS}" -S -U "${SUFIX}" "${file}" "${file%.*}-${SUFIX}.ttf"
   done
-  # variable fonts
-  for file in variable_ttf/*.ttf; do
-    echo "Process ${file}..."
-    pyftfeatfreeze -f "${SS}" -S -U "${SUFIX}" "${file}" "${file%.*}-${SUFIX}.ttf"
-  done 
+  echo "Move and compress files..."
   mv ./ttf/*${SUFIX}.ttf "${OPUT_DIR}/ttf"
   mv ./variable_ttf/*${SUFIX}.ttf "${OPUT_DIR}"
   zip -q -r "../${OPUT_DIR}.zip" "${OPUT_DIR}"
   rm -rf ttf/ "${OPUT_DIR}"
   # Exit virtual env
-  echo "Finish and deactivating..."
+  echo "Finish and deactivate..."
   deactivate
 
   # Delete the tmp folder
