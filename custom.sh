@@ -18,7 +18,7 @@ OPUT_DIR="FiraCode-Custom"
 
 
 # Install requirements
-if ! command -v curl > /dev/null 2>&1; then
+if ! command -v curl > /dev/null 2>&1 && [ "$(uname -s)" == "Linux" ]; then
   sudo apt install curl python3-venv
 fi
 
@@ -32,11 +32,11 @@ if [ ! -d "${TMP_DIR}" ]; then
     echo "Download the original Fira Code file..."
     curl -LJ "${URL}" > "FiraCode.zip"
   fi
-  echo "Extracte 'FiraCode.zip'..."
+  echo "Extract 'FiraCode.zip'..."
   unzip -q "FiraCode.zip"
   echo "Delete unnecessary files..."
   rm fira_code.css README.txt specimen.html
-  rm -rf woff/ woff2/ variable_ttf/
+  rm -rf woff/ woff2/
 
   # Create a python virtual environment
   echo "Create a python virtual environment..."
@@ -49,12 +49,20 @@ if [ ! -d "${TMP_DIR}" ]; then
     pip3 install --upgrade opentype-feature-freezer
   fi
   # Customize fonts
-  mkdir "${OPUT_DIR}"
+  mkdir -p "${OPUT_DIR}/ttf"
   echo "Customize fonts..."
+  # ttf fonts
   for file in ttf/*.ttf; do
+    echo "Process ${file}..."
     pyftfeatfreeze -f "${SS}" -S -U "${SUFIX}" "${file}" "${file%.*}-${SUFIX}.ttf"
   done
-  mv ./ttf/*-${SUFIX}.ttf "${OPUT_DIR}"
+  # variable fonts
+  for file in variable_ttf/*.ttf; do
+    echo "Process ${file}..."
+    pyftfeatfreeze -f "${SS}" -S -U "${SUFIX}" "${file}" "${file%.*}-${SUFIX}.ttf"
+  done 
+  mv ./ttf/*${SUFIX}.ttf "${OPUT_DIR}/ttf"
+  mv ./variable_ttf/*${SUFIX}.ttf "${OPUT_DIR}"
   zip -q -r "../${OPUT_DIR}.zip" "${OPUT_DIR}"
   rm -rf ttf/ "${OPUT_DIR}"
   # Exit virtual env
