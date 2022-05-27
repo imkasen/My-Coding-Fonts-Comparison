@@ -8,26 +8,41 @@ Current font configuration:
 
 ## Fira Code Stylistic Sets
 
-### VS Code Settings
+### [VS Code Settings](https://github.com/tonsky/FiraCode/wiki/VS-Code-Instructions)
+
+#### Option 1: Use the Custom Font
+
+* `"editor.fontFamily": "'Fira Code Custom', ..."`
+* `"editor.fontLigatures": true`
+
+#### Option 2: Use the Default Font
 
 * `"editor.fontFamily": "'Fira Code', ..."`
 * `"editor.fontLigatures": "'ss01', 'ss03', 'ss05', 'ss06', 'zero', 'cv15'"`
 
 ### Custom Baking
 
-#### Script
+#### Docker
 
-1. run `custom.sh`
+1. Run `firacode/custom.sh`, which requires **git** and **docker** pre-installed.
 
-   ``` bash
+   ``` Bash
    # default
-   curl -fsL https://raw.githubusercontent.com/imkasen/my-coding-fonts-config/master/custom.sh | bash
-   
+   curl -fsL https://raw.githubusercontent.com/imkasen/my-coding-fonts-config/master/firacode/custom.sh | bash
    # fastgit
-   curl -fsL https://raw.fastgit.org/imkasen/my-coding-fonts-config/master/custom.sh | bash
+   curl -fsL https://raw.fastgit.org/imkasen/my-coding-fonts-config/master/firacode/custom.sh | bash
    ```
 
-#### Manually
+#### ~~Script~~
+
+1. Run `firacode/custom(deprecated).sh`
+
+   ``` Bash
+   # default
+   curl -fsL https://raw.githubusercontent.com/imkasen/my-coding-fonts-config/master/firacode/custom(deprecated).sh | bash
+   ```
+
+#### ~~Manually~~
 
 1. Create a python virtual environment
 2. Install [OpenType Feature Freezer](https://github.com/twardoch/fonttools-opentype-feature-freezer) : `pip install --upgrade opentype-feature-freezer`

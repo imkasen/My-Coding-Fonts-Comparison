@@ -4,21 +4,21 @@
 
 # ===============================
 # Please change stylistic sets here
-SS=ss01,ss03,ss05,ss06,zero,cv15
-# ===============================
+SS="ss01,ss03,ss05,ss06,zero,cv15"
 # the temporary folder name
 TMP_DIR="Baking"
 # the original font file url
 URL=$(curl -s https://api.github.com/repos/tonsky/FiraCode/releases/latest | \
   grep "browser_download_url" | cut -d '"' -f 4)
-# Custom font sufix
-SUFIX="Custom"
+# Custom font suffix
+SUFFIX="Custom"
 # Output folder
 OPUT_DIR="FiraCode-Custom"
+# ===============================
 
 
 # Install requirements
-if ! command -v curl > /dev/null 2>&1 && [ "$(uname -s)" == "Linux" ]; then
+if apt --version &> /dev/null && ! curl --help &> /dev/null; then
   sudo apt install curl python3-venv
 fi
 
@@ -55,11 +55,11 @@ if [ ! -d "${TMP_DIR}" ]; then
   # ttf fonts, variable fonts
   for file in ttf/*.ttf variable_ttf/*.ttf; do
     echo "Process ${file}..."
-    pyftfeatfreeze -f "${SS}" -S -U "${SUFIX}" "${file}" "${file%.*}-${SUFIX}.ttf"
+    pyftfeatfreeze -f "${SS}" -S -U "${SUFFIX}" "${file}" "${file%.*}-${SUFFIX}.ttf"
   done
   echo "Move and compress files..."
-  mv ./ttf/*${SUFIX}.ttf "${OPUT_DIR}/ttf"
-  mv ./variable_ttf/*${SUFIX}.ttf "${OPUT_DIR}"
+  mv ./ttf/*${SUFFIX}.ttf "${OPUT_DIR}/ttf"
+  mv ./variable_ttf/*${SUFFIX}.ttf "${OPUT_DIR}"
   zip -q -r "../${OPUT_DIR}.zip" "${OPUT_DIR}"
   rm -rf ttf/ "${OPUT_DIR}"
   # Exit virtual env
