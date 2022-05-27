@@ -12,16 +12,24 @@ SUFFIX="Custom"
 OPUTDIR="FiraCode Custom"
 # ===============================
 
-# Please install git and docker first
-
 set -Eeuo pipefail  # fail fast
+
+# Please install git and docker first
+if ! git --version &> /dev/null; then
+    echo "Please install git!"
+    exit 1
+fi
+if ! docker --version &> /dev/null; then
+    echo "Please install docker!"
+    exit 1
+fi
 
 # 1. Clone Fira Code repository
 clear
 cd ~ || exit 
 if [[ ! -d FiraCode ]]; then
     echo "Clone FiraCode repository..."
-    git clone git@github.com:tonsky/FiraCode.git  
+    git clone --depth 1 git@github.com:tonsky/FiraCode.git  
 fi
 
 # 2. Build locally
