@@ -1,12 +1,14 @@
 # My Coding Fonts Configuration
 
-Current font configuration:
+Current font configurations:
 
 * IDE / Editor: Fira Code Custom
 * Terminal: Caskaydia Cove Nerd Font
 * Chinese: Noto Sans SC
 
 ## Fira Code Stylistic Sets
+
+Here I make some configurations to Fira Code.
 
 ### [VS Code Settings](https://github.com/tonsky/FiraCode/wiki/VS-Code-Instructions)
 
@@ -24,7 +26,7 @@ Current font configuration:
 
 #### Docker
 
-1. Run `firacode/custom.sh`, which requires **git** and **docker** pre-installed.
+* Run `firacode/custom.sh`, which requires **git** and **docker** pre-installed.
 
    ``` Bash
    # default
@@ -35,7 +37,7 @@ Current font configuration:
 
 #### ~~Script~~
 
-1. Run `firacode/custom-deprecated.sh`
+* Run `firacode/custom-deprecated.sh`
 
    ``` Bash
    # default
@@ -48,3 +50,7 @@ Current font configuration:
 2. Install [OpenType Feature Freezer](https://github.com/twardoch/fonttools-opentype-feature-freezer) : `pip install --upgrade opentype-feature-freezer`
 3. Execute `pyftfeatfreeze -n -v -f 'ss01,ss03,ss05,ss06,zero,cv15' -S -U Custom FiraCode-xxx.ttf FiraCode-xxx-Custom.ttf`
    * *ss06(`\\`) seems not working after testing, and maybe this [issue](https://github.com/twardoch/fonttools-opentype-feature-freezer/issues/20) can explain the problem.*
+
+#### Generate Nerd Fonts
+
+* Run `firacode/custom-nf.sh`, but the patched fonts can not be used by **Gnome Terminal** for now, so I still use `Caskaydia Cove Nerd Font`.
