@@ -12,8 +12,6 @@ SUFFIX="Custom"
 OPUTDIR="FiraCode Custom"
 # ===============================
 
-set -Eeuo pipefail  # fail fast
-
 # Please install git and docker first
 if ! git --version &> /dev/null; then
     echo "Please install git!"
@@ -29,10 +27,11 @@ clear
 cd ~ || exit 
 if [[ ! -d FiraCode ]]; then
     echo "Clone FiraCode repository..."
-    git clone --depth 1 git@github.com:tonsky/FiraCode.git  
+    git clone --depth 1 git@github.com:tonsky/FiraCode.git
 fi
 
 # 2. Build locally
+# https://github.com/tonsky/FiraCode#building-fira-code-locally
 clear
 cd FiraCode || exit
 echo "Build locally..."
@@ -41,14 +40,15 @@ if [[ -d distr ]]; then
 fi
 docker run --rm -v "${PWD}":/opt tonsky/firacode:latest ./script/build.sh -f "${SS}" -n "${FN}"
 
-# 3. Rename and pack
+# 3. Rename and compress
 clear
 cd ~ || exit
-echo "Rename and pack files..."
+echo "Rename and compress files..."
 if [[ -d ${OPUTDIR} ]]; then
     rm -rf "${OPUTDIR}"
 fi
-# generated fonts are in the "FiraCode/distr/" folder, which contains "ttf, variable ttf, woff, woff2" folders
+# generated fonts are in the "FiraCode/distr/" folder, which contains "ttf, variable ttf, woff, woff2" folders,
+# use 'ttf' folder here
 cp -r FiraCode/distr/ttf/"${FN}" "${OPUTDIR}" 
 for file in "${OPUTDIR}"/*.ttf; do
     mv "${file}" "${file%.*}-${SUFFIX}.ttf"
@@ -59,7 +59,6 @@ if zip --help &> /dev/null; then
 else
     tar -cf "${OPUTDIR}.tar" "${OPUTDIR}"
 fi
-rm -rf "${OPUTDIR}"
 rm -rf FiraCode
 docker rmi tonsky/firacode:latest
 clear
