@@ -35,11 +35,11 @@ Current font configuration:
 
 #### ~~Script~~
 
-1. Run `firacode/custom(deprecated).sh`
+1. Run `firacode/custom-deprecated.sh`
 
    ``` Bash
    # default
-   curl -fsL https://raw.githubusercontent.com/imkasen/my-coding-fonts-config/master/firacode/custom(deprecated).sh | bash
+   curl -fsL https://raw.githubusercontent.com/imkasen/my-coding-fonts-config/master/firacode/custom-deprecated.sh | bash
    ```
 
 #### ~~Manually~~
