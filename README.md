@@ -24,7 +24,7 @@ Here I make some configurations to Fira Code.
 
 ### Custom Baking
 
-#### Docker
+#### [Docker](https://github.com/tonsky/FiraCode#building-fira-code-locally)
 
 * Run `firacode/custom.sh`, which requires **git** and **docker** pre-installed.
 
@@ -51,6 +51,6 @@ Here I make some configurations to Fira Code.
 3. Execute `pyftfeatfreeze -n -v -f 'ss01,ss03,ss05,ss06,zero,cv15' -S -U Custom FiraCode-xxx.ttf FiraCode-xxx-Custom.ttf`
    * *ss06(`\\`) seems not working after testing, and maybe this [issue](https://github.com/twardoch/fonttools-opentype-feature-freezer/issues/20) can explain the problem.*
 
-#### Generate Nerd Fonts
+#### [Generate Nerd Fonts](https://github.com/ryanoasis/nerd-fonts#font-patcher)
 
 * Run `firacode/custom-nf.sh`, but the patched fonts can not be used by **Gnome Terminal** for now, so I still use `Caskaydia Cove Nerd Font`.
